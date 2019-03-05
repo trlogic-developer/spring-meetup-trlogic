@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          auto-add-partitions: true
+          min-partition-count: 4
+      bindings:
+        request-channel:
+          destination: request-channel-topic
+          contentType: application/json
+          consumer:
+            concurrency: 4
+        reply-channel:
+          destination: reply-channel-topic
+          contentType: application/json
+          producer:
+            concurrency: 4
+
